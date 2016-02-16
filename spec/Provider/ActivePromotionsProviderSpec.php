@@ -13,6 +13,7 @@ namespace spec\Sylius\Component\Promotion\Provider;
 
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Promotion\Model\PromotionInterface;
+use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 use Sylius\Component\Promotion\Provider\PreQualifiedPromotionsProviderInterface;
 use Sylius\Component\Promotion\Repository\PromotionRepositoryInterface;
 
@@ -39,10 +40,11 @@ class ActivePromotionsProviderSpec extends ObjectBehavior
     function it_provides_active_promotions(
         $promotionRepository,
         PromotionInterface $promotion1,
-        PromotionInterface $promotion2
+        PromotionInterface $promotion2,
+        PromotionSubjectInterface $subject
     ) {
         $promotionRepository->findActive()->willReturn([$promotion1, $promotion2]);
 
-        $this->provide()->shouldReturn([$promotion1, $promotion2]);
+        $this->getPromotions($subject)->shouldReturn([$promotion1, $promotion2]);
     }
 }
