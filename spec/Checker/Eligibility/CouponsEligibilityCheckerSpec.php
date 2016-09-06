@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Sylius\Component\Promotion\Checker;
+namespace spec\Sylius\Component\Promotion\Checker\Eligibility;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Promotion\Checker\CouponsEligibilityChecker;
-use Sylius\Component\Promotion\Checker\PromotionEligibilityCheckerInterface;
+use Sylius\Component\Promotion\Checker\Eligibility\CouponsEligibilityChecker;
+use Sylius\Component\Promotion\Checker\Eligibility\PromotionEligibilityCheckerInterface;
 use Sylius\Component\Promotion\Model\CouponInterface;
 use Sylius\Component\Promotion\Model\PromotionCouponAwareSubjectInterface;
 use Sylius\Component\Promotion\Model\PromotionInterface;

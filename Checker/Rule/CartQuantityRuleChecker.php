@@ -9,23 +9,28 @@
  * file that was distributed with this source code.
  */
 
-namespace Sylius\Component\Promotion\Checker;
+namespace Sylius\Component\Promotion\Checker\Rule;
 
+use Sylius\Component\Promotion\Model\PromotionCountableSubjectInterface;
 use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 
 /**
  * @author Saša Stamenković <umpirsky@gmail.com>
  */
-class ItemTotalRuleChecker implements RuleCheckerInterface
+class CartQuantityRuleChecker implements RuleCheckerInterface
 {
-    const TYPE = 'item_total';
+    const TYPE = 'cart_quantity';
 
     /**
      * {@inheritdoc}
      */
     public function isEligible(PromotionSubjectInterface $subject, array $configuration)
     {
-        return $subject->getPromotionSubjectTotal() >= $configuration['amount'];
+        if (!$subject instanceof PromotionCountableSubjectInterface) {
+            return false;
+        }
+
+        return $subject->getPromotionSubjectCount() >= $configuration['count'];
     }
 
     /**
@@ -33,6 +38,6 @@ class ItemTotalRuleChecker implements RuleCheckerInterface
      */
     public function getConfigurationFormType()
     {
-        return 'sylius_promotion_rule_item_total_configuration';
+        return 'sylius_promotion_rule_cart_quantity_configuration';
     }
 }

@@ -9,21 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace spec\Sylius\Component\Promotion\Checker;
+namespace spec\Sylius\Component\Promotion\Checker\Eligibility;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Promotion\Checker\PromotionEligibilityCheckerInterface;
+use Sylius\Component\Promotion\Checker\Eligibility\PromotionEligibilityCheckerInterface;
+use Sylius\Component\Promotion\Checker\Eligibility\UsageLimitEligibilityChecker;
 use Sylius\Component\Promotion\Model\PromotionInterface;
 use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 
 /**
+ * @mixin UsageLimitEligibilityChecker
+ *
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
 final class UsageLimitEligibilityCheckerSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Sylius\Component\Promotion\Checker\UsageLimitEligibilityChecker');
+        $this->shouldHaveType(UsageLimitEligibilityChecker::class);
     }
 
     function it_implements_promotion_eligibility_checker_interface()
