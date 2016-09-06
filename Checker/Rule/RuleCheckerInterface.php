@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sylius\Component\Promotion\Checker;
+namespace Sylius\Component\Promotion\Checker\Rule;
 
 use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 
